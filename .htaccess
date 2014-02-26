@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteBase /mobileapi
+# Hide the application and system directories by redirecting the request to index.php
+RewriteRule ^(application|system|\.svn) index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+ErrorDocument 400 /assets/index.html
+ErrorDocument 401 /assets/index.html
+ErrorDocument 403 /assets/index.html
+ErrorDocument 404 /assets/index.html
+ErrorDocument 500 /assets/index.html
